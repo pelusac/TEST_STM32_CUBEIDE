@@ -42,3 +42,27 @@ la línea ` #include "stm32f1xx_hal.h"`por el `stm32f`que corresponda en mi caso
 	  HAL_UART_Transmit(&huart2, (uint16_t*)MSG, sizeof(MSG), 100);
 	  SSD1306_Puts ("", &Font_7x10, 1);
  ```
+6. Aprovecho para documentar el encoder. En cubeMX la configuración es `Combined Channels- Encoder Mode`
+7. He preescalado el timer con `47` ya que la Frecuencia es `48Mhz`
+8. La polaridad en ampos canales es `Rising Edge`
+9. !!!!OJO!!!!! Los dos pines asociados al modo encoder deben configurarse como `PULLUP` si no, no funcionará.
+10. Código que implementa el contador de pulsos:
+11. ```c
+12.  HAL_TIM_Encoder_Start(&htim1, TIM_CHANNEL_ALL);
+13.  HAL_TIM_Base_Start(&htim3);  //esto es para hacer pruebas
+14.  while (1)
+  {
+//	  if(HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_9)){
+//		  i++;
+//	  }
+	  timer = __HAL_TIM_GET_COUNTER(&htim3);
+	  sprintf(MSG, "Ticks = %ld",TIM1->CNT);
+	  SSD1306_GotoXY (10,10);
+	  SSD1306_Puts (MSG, &Font_7x10, 1);
+	  SSD1306_UpdateScreen();
+	  //HAL_Delay(100);
+	  HAL_UART_Transmit(&huart2, (uint16_t*)MSG, sizeof(MSG), 100);
+	  SSD1306_Puts ("        ", &Font_7x10, 1);
+
+}
+```
