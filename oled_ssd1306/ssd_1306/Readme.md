@@ -31,7 +31,7 @@ la línea ` #include "stm32f1xx_hal.h"`por el `stm32f`que corresponda en mi caso
 //#define SSD1306_I2C_ADDR       0x7A
 #endif
 ```
-5. Función para convertir variables
+5. Función para convertir variables e imprimirlas en la pantalla
 ```c
  timer = __HAL_TIM_GET_COUNTER(&htim3);
 	  sprintf(MSG, "Ticks = %ld",timer);
