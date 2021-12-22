@@ -1,4 +1,4 @@
-## Uso de la libreía más ligera para el `ssd1306`
+## Uso de la librería más ligera para el la pantalla OLED basada en`ssd1306`
 
 1. Agregar al proyecto bajo la carpeta `drivers`el directorio completo `ssd_1306` y agregarlo al `PATH`con botón derecho sobre los directorios.
 2. En la configuración del `bus I2C`no olvidar pornerlo en `fastMode`
