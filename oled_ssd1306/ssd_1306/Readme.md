@@ -41,4 +41,4 @@ la línea ` #include "stm32f1xx_hal.h"`por el `stm32f`que corresponda en mi caso
 	  //HAL_Delay(100);
 	  HAL_UART_Transmit(&huart2, (uint16_t*)MSG, sizeof(MSG), 100);
 	  SSD1306_Puts ("", &Font_7x10, 1);
-    ```
+ ```
